@@ -24,35 +24,33 @@ public class Room {
     public boolean isOccupied(){
         return occupied;
     }
-    public void setOccupied(boolean occupied){
-        this.occupied = occupied;
-    }
 
     public boolean isDirty(){
         return dirty;
-    }
-    public void setDirty(boolean dirty){
-        this.dirty = dirty;
     }
 
     public boolean isAvailable(){
         return (!this.isOccupied() && !this.isDirty());
     }
 
-    public boolean checkIn(){
-        return isOccupied();
-    }
-
-    public boolean checkout(){
-        return isAvailable();
-    }
-
-    public boolean cleanroom(){
-        boolean occupied = false;
-        if(checkIn()){
-            setDirty(true);
-            setOccupied(true);
+    public void checkIn(){
+        if(!isOccupied() && !isDirty()){
+            this.occupied = true;
+            this.dirty = true;
         }
-        return occupied;
+    }
+
+    public void checkout() throws Exception {
+        if(isOccupied()){
+            this.occupied = false;
+        }else{
+            throw new Exception("This room can not be checkout.");
+        }
+    }
+
+    public void cleanroom(){
+        if(isDirty()){
+            this.dirty = false;
+        }
     }
 }
