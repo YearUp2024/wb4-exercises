@@ -40,7 +40,7 @@ public class Room {
         }
     }
 
-    public void checkout() throws Exception {
+    public void checkOut() throws Exception {
         if(isOccupied()){
             this.occupied = false;
         }else{
