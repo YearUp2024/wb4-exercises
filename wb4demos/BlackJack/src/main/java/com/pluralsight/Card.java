@@ -81,4 +81,8 @@ public class Card {
     public void flip(){
         isFaceUp = !isFaceUp;
     }
+
+    public void DisplayCard(){
+        System.out.println(this.value + " of " + this.value);
+    }
 }
