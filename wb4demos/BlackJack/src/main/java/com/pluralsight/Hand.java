@@ -13,6 +13,12 @@ public class Hand {
         cards.add(card);
     }
 
+    public void Deal(Deck deck, int numberOfCardsToDeal){
+        for(int i = 0; i < numberOfCardsToDeal ; i++){
+            Deal(deck.deal());
+        }
+    }
+
     public int getSize(){
         return cards.size();
     }
@@ -27,10 +33,20 @@ public class Hand {
         return hasValue;
     }
 
-    public void DisplayHand() throws Exception {
+    @Override
+    public String  toString(){
+        StringBuilder stringBuilder = new StringBuilder();
         for(Card card : this.cards){
-            card.DisplayCard();
+            stringBuilder.append(card.toString());
+            stringBuilder.append("\n");
         }
-        System.out.println("This total is: " + this.getValue() + "\n");
+
+        try {
+            stringBuilder.append("The total is:").append(this.getValue());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        stringBuilder.append("\n");
+        return stringBuilder.toString();
     }
 }

@@ -75,6 +75,4 @@ public class Console {
         float userinput =Float.parseFloat(value);
         return  userinput;
     }
-
-
 }
